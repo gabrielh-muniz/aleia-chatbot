@@ -2,7 +2,7 @@
   "name": "aleia-chatbot",
   "version": "1.0.0",
   "description": "WIP",
-  "main": "app.js",
+  "main": "backend/app.js",
   "type": "module",
   "scripts": {
     "test": "node --watch backend/app.js"
