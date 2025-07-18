@@ -1,6 +1,11 @@
 import { create } from "zustand";
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { catchError } from "@/lib/errorHandler.js";
 
 const firebaseConfig = {
@@ -46,7 +51,7 @@ export const useAuthStore = create((set) => {
     login: async (email, password) => {
       set({ isLoading: true, error: null });
       const [error, userCredential] = await catchError(
-        auth.signInWithEmailAndPassword(email, password)
+        signInWithEmailAndPassword(auth, email, password)
       );
       if (error) {
         set({
@@ -65,7 +70,7 @@ export const useAuthStore = create((set) => {
 
     logout: async () => {
       set({ isLoading: true, error: null });
-      const [error, _] = await catchError(auth.signOut());
+      const [error, _] = await catchError(signOut(auth));
       if (error) {
         set({ isLoading: false, error: error.message });
         return;

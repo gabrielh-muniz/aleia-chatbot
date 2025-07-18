@@ -32,7 +32,7 @@ function LoginPage() {
     resolver: zodResolver(schema),
   });
 
-  const onLoginSubmit = (data) => {
+  const onLoginSubmit = async (data) => {
     console.log(data);
   };
 
@@ -61,7 +61,7 @@ function LoginPage() {
           <CardContent className="space-y-6">
             <form className="space-y-4" onSubmit={handleSubmit(onLoginSubmit)}>
               {/* Global error message with animation */}
-              {errors.root && (
+              {/*error && (
                 <AnimatePresence>
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0 }}
@@ -70,10 +70,10 @@ function LoginPage() {
                     transition={{ duration: 0.5 }}
                     className="bg-red-50 border border-red-200 rounded-md p-3"
                   >
-                    <p className="text-sm text-red-600">{errors.global}</p>
+                    <p className="text-sm text-red-600">{error}</p>
                   </motion.div>
                 </AnimatePresence>
-              )}
+              )*/}
               <div className="space-y-2">
                 <Label
                   htmlFor="email"
