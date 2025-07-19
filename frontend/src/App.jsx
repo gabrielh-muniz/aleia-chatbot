@@ -3,6 +3,7 @@ import LoginPage from "@/pages/LoginPage";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import UserAuthControl from "@/components/UserAuthControl";
+import DashboardLayout from "@/layouts/DashboardLayout";
 
 function App() {
   return (
@@ -29,10 +30,14 @@ function App() {
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <div>Dashboard</div>
+              <DashboardLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route index element={<div>Dashboard Home</div>} />
+          <Route path="settings" element={<div>Settings Page</div>} />
+          <Route path="profile" element={<div>Profile Page</div>} />
+        </Route>
       </Routes>
     </Router>
   );
