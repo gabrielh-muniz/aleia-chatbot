@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const schema = z.object({
   email: z.email("Invalid email address").nonempty("Email is required"),
@@ -140,12 +141,12 @@ function LoginPage() {
                   )}
                 </AnimatePresence>
                 <div className="text-right">
-                  <a
-                    href="#"
+                  <Link
+                    to="/auth/forgot-password"
                     className="text-sm text-blue-400 hover:text-blue-500 "
                   >
                     Forgot your password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <Button
