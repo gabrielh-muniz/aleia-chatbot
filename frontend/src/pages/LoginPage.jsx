@@ -13,7 +13,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/auth";
+import { catchError } from "@/lib/errorHandler";
 
 const schema = z.object({
   email: z.email("Invalid email address").nonempty("Email is required"),
@@ -33,8 +35,19 @@ function LoginPage() {
     resolver: zodResolver(schema),
   });
 
+  const { login, error, isLoading } = useAuthStore();
+
+  const navigate = useNavigate();
+
   const onLoginSubmit = async (data) => {
-    console.log(data);
+    const [loginError, creds] = await catchError(
+      login(data.email, data.password)
+    );
+    if (loginError) {
+      console.error("Login failed:", loginError);
+      return;
+    }
+    navigate("/dashboard");
   };
 
   return (
@@ -62,7 +75,7 @@ function LoginPage() {
           <CardContent className="space-y-6">
             <form className="space-y-4" onSubmit={handleSubmit(onLoginSubmit)}>
               {/* Global error message with animation */}
-              {/*error && (
+              {error && (
                 <AnimatePresence>
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0 }}
@@ -74,7 +87,7 @@ function LoginPage() {
                     <p className="text-sm text-red-600">{error}</p>
                   </motion.div>
                 </AnimatePresence>
-              )*/}
+              )}
               <div className="space-y-2">
                 <Label
                   htmlFor="email"
