@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/auth";
 import { catchError } from "@/lib/errorHandler";
+import { LoaderCircle } from "lucide-react";
 
 const schema = z.object({
   email: z.email("Invalid email address").nonempty("Email is required"),
@@ -164,9 +165,14 @@ function LoginPage() {
               </div>
               <Button
                 type="submit"
+                disabled={isLoading}
                 className="w-full h-11 bg-blue-400 hover:bg-blue-500 text-white font-medium transition-colors"
               >
-                Sign In
+                {isLoading ? (
+                  <LoaderCircle className="animate-spin" />
+                ) : (
+                  "Sign In"
+                )}
               </Button>
             </form>
           </CardContent>
