@@ -13,8 +13,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ChevronLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ChevronLeft, LoaderCircle } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/auth";
+import { catchError } from "@/lib/errorHandler";
 
 const schema = z.object({
   email: z.email("Invalid email address").nonempty("Email is required"),
@@ -29,8 +31,18 @@ function ForgotPasswordPage() {
     resolver: zodResolver(schema),
   });
 
+  const { isLoading, error, sendPasswordResetEmail } = useAuthStore();
+
+  const navigate = useNavigate();
+
   const onForgotPasswordSubmit = (data) => {
-    console.log(data);
+    const [resetError, _] = catchError(sendPasswordResetEmail(data.email));
+    if (resetError) {
+      console.error("Password reset failed:", resetError);
+      return;
+    }
+    //TODO: Show a toast message
+    navigate("/auth/login");
   };
 
   return (
@@ -71,7 +83,7 @@ function ForgotPasswordPage() {
               onSubmit={handleSubmit(onForgotPasswordSubmit)}
             >
               {/* Global error message with animation */}
-              {errors.root && (
+              {error && (
                 <AnimatePresence>
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0 }}
@@ -119,9 +131,14 @@ function ForgotPasswordPage() {
               </div>
               <Button
                 type="submit"
+                disabled={isLoading}
                 className="w-full h-11 bg-blue-400 hover:bg-blue-500 text-white font-medium transition-colors"
               >
-                Send Reset Link
+                {isLoading ? (
+                  <LoaderCircle className="animate-spin" />
+                ) : (
+                  "Send Reset Link"
+                )}
               </Button>
             </form>
           </CardContent>

@@ -84,5 +84,20 @@ export const useAuthStore = create((set) => {
         error: null,
       });
     },
+
+    sendPasswordResetEmail: async (email) => {
+      set({ isLoading: true, error: null });
+      const actionCodeSettings = {
+        url: `${window.location.origin}/auth/login`,
+      };
+      const [error, _] = await catchError(
+        sendPasswordResetEmail(auth, email, actionCodeSettings)
+      );
+      if (error) {
+        set({ isLoading: false, error: error.message });
+        return;
+      }
+      set({ isLoading: false, error: null });
+    },
   };
 });
