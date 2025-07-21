@@ -22,7 +22,7 @@ const defaultState = {
   user: null,
   isLoading: false,
   isAuthenticated: false,
-  isCheckingAuth: false,
+  isCheckingAuth: true,
   error: null,
   isAdmin: false,
 };
@@ -35,12 +35,14 @@ export const useAuthStore = create((set) => {
         user,
         isAuthenticated: true,
         isLoading: false,
+        isCheckingAuth: false,
       });
     } else {
       set({
         user: null,
         isAuthenticated: false,
         isLoading: false,
+        isCheckingAuth: false,
       });
     }
   });
