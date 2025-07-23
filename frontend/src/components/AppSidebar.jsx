@@ -18,7 +18,14 @@ import {
   DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ChevronsUpDown, User, Settings, Sparkles, LogOut } from "lucide-react";
+import {
+  ChevronsUpDown,
+  User,
+  Settings,
+  Sparkles,
+  LogOut,
+  CircleCheck,
+} from "lucide-react";
 import { useAuthStore } from "@/store/auth";
 import { Navigate, useNavigate } from "react-router-dom";
 import { catchError } from "@/lib/errorHandler";
@@ -55,7 +62,13 @@ function AppSidebar() {
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">username</span>
+                    <span className="truncate font-medium flex items-center gap-1">
+                      username
+                      {/* <CircleCheck
+                        className="text-blue-500 size-3.5"
+                        strokeWidth={3}
+                      /> */}
+                    </span>
                     <span className="truncate text-xs">{user.email}</span>
                   </div>
                   <ChevronsUpDown className="ml-auto size-4" />

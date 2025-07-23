@@ -4,6 +4,7 @@ import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import UserAuthControl from "@/components/UserAuthControl";
 import DashboardLayout from "@/layouts/DashboardLayout";
+import ProfilePage from "@/pages/ProfilePage";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         >
           <Route index element={<div>Dashboard Home</div>} />
           <Route path="settings" element={<div>Settings Page</div>} />
-          <Route path="profile" element={<div>Profile Page</div>} />
+          <Route path="profile" element={<ProfilePage />} />
         </Route>
       </Routes>
     </Router>
