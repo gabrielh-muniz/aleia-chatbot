@@ -23,7 +23,12 @@ pool.on("error", (err) => {
   process.exit(-1);
 });
 
-// Basic query function
+/**
+ * Executes a query on the database
+ * @param {string} text - The SQL query string
+ * @param {Array<string>} params - The parameters for the query
+ * @returns {Promise} - A promise that resolves to the query result
+ */
 function query(text, params) {
   return pool.query(text, params);
 }
