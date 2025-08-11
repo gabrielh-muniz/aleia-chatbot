@@ -26,7 +26,7 @@ pool.on("error", (err) => {
 /**
  * Executes a query on the database
  * @param {string} text - The SQL query string
- * @param {Array<String>} params - The parameters for the query
+ * @param {Array<string>} params - The parameters for the query
  * @returns {Promise} - A promise that resolves to the query result
  */
 function query(text, params) {
