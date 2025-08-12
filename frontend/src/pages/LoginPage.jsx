@@ -10,46 +10,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CentralizedWrapper from "@/components/CentralizedWrapper";
 import { motion, AnimatePresence } from "framer-motion";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthStore } from "@/store/auth";
-import { catchError } from "@/lib/errorHandler";
+import { Link } from "react-router-dom";
 import { LoaderCircle } from "lucide-react";
-
-const schema = z.object({
-  email: z.email("Invalid email address").nonempty("Email is required"),
-  password: z
-    .string()
-    .min(6, "Password must be at least 6 characters long")
-    .max(50)
-    .nonempty("Password is required"),
-});
+import { useLoginForm } from "@/hooks/useLoginForm";
 
 function LoginPage() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(schema),
-  });
-
-  const { login, error, isLoading } = useAuthStore();
-
-  const navigate = useNavigate();
-
-  const onLoginSubmit = async (data) => {
-    const [loginError, creds] = await catchError(
-      login(data.email, data.password)
-    );
-    if (loginError) {
-      console.error("Login failed:", loginError);
-      return;
-    }
-    navigate("/dashboard");
-  };
+  const { register, handleSubmit, error, errors, isLoading } = useLoginForm();
 
   return (
     <CentralizedWrapper>
@@ -74,7 +40,7 @@ function LoginPage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-6">
-            <form className="space-y-4" onSubmit={handleSubmit(onLoginSubmit)}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               {/* Global error message with animation */}
               {error && (
                 <AnimatePresence>
