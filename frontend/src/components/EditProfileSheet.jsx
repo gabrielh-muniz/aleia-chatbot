@@ -4,6 +4,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetDescription,
+  SheetFooter,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -191,6 +192,13 @@ function EditProfileSheet({ isOpen, onClose }) {
             </div>
           </div>
         </div>
+
+        <SheetFooter className="gap-2">
+          <Button variant="outline">Cancel</Button>
+          <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+            Save Changes
+          </Button>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
