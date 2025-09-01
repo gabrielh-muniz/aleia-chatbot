@@ -8,6 +8,7 @@ import { useAuthStore } from "@/store/auth";
 import { Navigate, useNavigate } from "react-router-dom";
 import { catchError } from "@/lib/errorHandler";
 import NavUser from "@/components/NavUser";
+import { UserPlus } from "lucide-react";
 
 function AppSidebar() {
   const navigate = useNavigate();
