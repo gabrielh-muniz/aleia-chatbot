@@ -26,8 +26,8 @@ function DashboardLayout() {
               console.log("Create user clicked");
             }}
           >
-            <UserPlus className="h-3 w-3 mr-1" />
-            Create User
+            <UserPlus className="h-3 w-3" />
+            <span className="hidden md:inline-block ml-1">Create User</span>
           </Button>
         </header>
         <main>
