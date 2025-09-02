@@ -17,6 +17,8 @@ import {
   Heart,
   Activity,
 } from "lucide-react";
+import { useState } from "react";
+import EditProfileSheet from "@/components/EditProfileSheet";
 
 const recentProcedures = [
   {
@@ -94,6 +96,8 @@ const recentProcedures = [
 ];
 
 function ProfilePage() {
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
   return (
     <div className="p-4 flex flex-col gap-5">
       <div className="flex flex-col xl:flex-row gap-5">
@@ -105,7 +109,11 @@ function ProfilePage() {
                 <ShieldUser />
                 Admin
               </Badge>
-              <Button className="text-sm cursor-pointer" variant="outline">
+              <Button
+                className="text-sm cursor-pointer"
+                variant="outline"
+                onClick={() => setIsEditOpen(true)}
+              >
                 <SquarePen className="h-5 w-5" />
                 Edit Profile
               </Button>
@@ -329,6 +337,11 @@ function ProfilePage() {
           </div>
         </CardContent>
       </Card>
+
+      <EditProfileSheet
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+      />
     </div>
   );
 }
