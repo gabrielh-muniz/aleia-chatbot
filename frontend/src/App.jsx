@@ -5,6 +5,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import UserAuthControl from "@/components/UserAuthControl";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import ProfilePage from "@/pages/ProfilePage";
+import DashboardPage from "@/pages/DashboardPage";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<div>Dashboard Home</div>} />
+          <Route index element={<DashboardPage />} />
           <Route path="settings" element={<div>Settings Page</div>} />
           <Route path="profile" element={<ProfilePage />} />
         </Route>
