@@ -6,12 +6,13 @@ import UserAuthControl from "@/components/UserAuthControl";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import ProfilePage from "@/pages/ProfilePage";
 import DashboardPage from "@/pages/DashboardPage";
+import LandingPage from "@/pages/LandingPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<div>Hello, App!</div>} />
+        <Route path="/" element={<LandingPage />} />
         <Route
           path="/auth/login"
           element={

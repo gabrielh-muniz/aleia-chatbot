@@ -31,4 +31,13 @@ const NAVIGATION_DATA = {
   ],
 };
 
-export { NAVIGATION_DATA };
+const NAVIGATION_LANDING_DATA = [
+  { id: 1, title: "Product", url: "#" },
+  { id: 2, title: "Features", url: "#" },
+  { id: 3, title: "Pricing", url: "#" },
+  { id: 4, title: "Company", url: "#" },
+  { id: 5, title: "Blog", url: "#" },
+  { id: 6, title: "Login", url: "/auth/login" },
+];
+
+export { NAVIGATION_DATA, NAVIGATION_LANDING_DATA };
