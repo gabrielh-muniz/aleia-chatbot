@@ -1,6 +1,7 @@
 import { Bot, Menu, X } from "lucide-react";
 import { NAVIGATION_LANDING_DATA } from "@/constants/navigation";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function LandingPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -9,14 +10,23 @@ function LandingPage() {
     <div className="w-screen h-screen bg-slate-400">
       <header className="flex justify-between items-center py-6 px-8 md:px-32 bg-white">
         {/* Logo */}
-        <div className="text-xl font-bold uppercase flex items-center">
+        <motion.div
+          className="text-xl font-bold uppercase flex items-center"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+        >
           <Bot className="mr-2" />
           <span>
             ALE<span className="text-blue-400">IA</span>
           </span>
-        </div>
+        </motion.div>
         {/* Navigation Menu */}
-        <nav>
+        <motion.nav
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+        >
           <ul className="hidden md:flex gap-8 ml-3">
             {NAVIGATION_LANDING_DATA.map((item) => (
               <li key={item.id}>
@@ -29,7 +39,7 @@ function LandingPage() {
               </li>
             ))}
           </ul>
-        </nav>
+        </motion.nav>
         {/* Mobile Menu button */}
         <div className="md:hidden">
           <button
