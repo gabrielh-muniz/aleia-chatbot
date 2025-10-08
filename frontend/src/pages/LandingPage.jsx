@@ -405,6 +405,101 @@ function LandingPage2() {
           </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <section className="bg-secondary text-secondary-foreground py-16 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl space-y-8 text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+              Ready to transform your clinic?
+            </h2>
+            <p className="text-secondary-foreground/80 text-lg text-balance">
+              Join thousands of healthcare professionals who trust ALEIA to
+              handle their administrative tasks. Start your free 14-day trial
+              today—no credit card required.
+            </p>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="bg-background text-foreground hover:bg-background/90 text-base font-semibold"
+              >
+                Start Free Trial
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-secondary-foreground/20 text-secondary-foreground hover:bg-secondary-foreground/10 bg-transparent text-base font-semibold"
+              >
+                Schedule a Demo
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-border/40 border-t py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <div className="mb-4 flex items-center gap-2">
+                <div className="bg-primary flex h-8 w-8 items-center justify-center rounded-lg">
+                  <Calendar className="text-primary-foreground h-5 w-5" />
+                </div>
+                <span className="text-lg font-semibold">
+                  ALE<span className="text-primary">IA</span>
+                </span>
+              </div>
+              <p className="text-muted-foreground text-sm">
+                AI-powered clinic management for modern healthcare
+                professionals.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-foreground mb-4 font-semibold">Product</h4>
+              <ul className="text-muted-foreground space-y-2 text-sm">
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Security
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Integrations
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-border/40 text-muted-foreground border-t pt-8 text-center text-sm">
+            © 2025 ALEIA. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
