@@ -10,6 +10,8 @@ import {
   FileText,
   Clock,
   BarChart3,
+  CheckCircle2,
+  Users,
 } from "lucide-react";
 import { NAVIGATION_LANDING_DATA } from "@/constants/navigation";
 import { useState } from "react";
@@ -296,6 +298,110 @@ function LandingPage2() {
                 efficiency in real-time.
               </p>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 lg:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="space-y-6">
+              <Badge variant="secondary">Why ALEIA</Badge>
+              <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+                Built specifically for healthcare professionals
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Unlike generic virtual assistants, ALEIA understands medical
+                terminology, HIPAA compliance, and the unique workflows of
+                healthcare practices.
+              </p>
+
+              <div className="space-y-4 pt-4">
+                <div className="flex gap-3">
+                  <CheckCircle2 className="text-primary mt-0.5 h-6 w-6 flex-shrink-0" />
+                  <div>
+                    <div className="text-foreground mb-1 font-semibold">
+                      HIPAA Compliant
+                    </div>
+                    <div className="text-muted-foreground">
+                      Enterprise-grade security for patient data protection
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <CheckCircle2 className="text-primary mt-0.5 h-6 w-6 flex-shrink-0" />
+                  <div>
+                    <div className="text-foreground mb-1 font-semibold">
+                      Easy Integration
+                    </div>
+                    <div className="text-muted-foreground">
+                      Works with your existing EHR and practice management
+                      software
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <CheckCircle2 className="text-primary mt-0.5 h-6 w-6 flex-shrink-0" />
+                  <div>
+                    <div className="text-foreground mb-1 font-semibold">
+                      24/7 Availability
+                    </div>
+                    <div className="text-muted-foreground">
+                      Never miss a patient inquiry, even after hours
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <CheckCircle2 className="text-primary mt-0.5 h-6 w-6 flex-shrink-0" />
+                  <div>
+                    <div className="text-foreground mb-1 font-semibold">
+                      Multilingual Support
+                    </div>
+                    <div className="text-muted-foreground">
+                      Communicate with patients in their preferred language
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <Card className="border-border/50 p-8">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-full">
+                      <Users className="text-primary h-6 w-6" />
+                    </div>
+                    <div>
+                      <div className="text-foreground font-semibold">
+                        Dr. Sarah Mitchell
+                      </div>
+                      <div className="text-muted-foreground text-sm">
+                        Family Medicine Clinic
+                      </div>
+                    </div>
+                  </div>
+                  <blockquote className="text-foreground text-lg leading-relaxed">
+                    "ALEIA has transformed our practice. We've reduced
+                    administrative overhead by 60% and our patients love the
+                    instant responses. It's like having three extra staff
+                    members."
+                  </blockquote>
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="fill-primary h-5 w-5"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
