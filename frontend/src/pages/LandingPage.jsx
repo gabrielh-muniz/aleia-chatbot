@@ -1,145 +1,28 @@
-import { Bot, Menu, X } from "lucide-react";
+import {
+  Bot,
+  Menu,
+  X,
+  Sparkles,
+  ArrowRight,
+  Calendar,
+  MessageSquare,
+  Phone,
+  FileText,
+  Clock,
+  BarChart3,
+} from "lucide-react";
 import { NAVIGATION_LANDING_DATA } from "@/constants/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import HeroImage from "@/assets/hero_image.png";
-
-function LandingPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  return (
-    <div className="relative h-screen w-screen overflow-hidden">
-      <header className="flex items-center justify-between bg-white px-8 py-6 md:px-32">
-        {/* Logo */}
-        <motion.div
-          className="flex items-center text-xl font-bold uppercase"
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        >
-          <Bot className="mr-2" />
-          <span>
-            ALE<span className="text-blue-400">IA</span>
-          </span>
-        </motion.div>
-        {/* Navigation Menu */}
-        <motion.nav
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        >
-          <ul className="ml-3 hidden gap-8 md:flex">
-            {NAVIGATION_LANDING_DATA.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={item.url}
-                  className="text-gray-600 hover:text-blue-400"
-                >
-                  {item.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </motion.nav>
-        {/* Mobile Menu button */}
-        <div className="md:hidden">
-          <button
-            className="rounded-md p-2 transition-colors duration-200 hover:bg-slate-100"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <div className="relative h-6 w-6">
-              <Menu
-                className={`absolute inset-0 transition-all duration-200 ${
-                  isMobileMenuOpen
-                    ? "rotate-180 opacity-0"
-                    : "rotate-0 opacity-100"
-                }`}
-              />
-              <X
-                className={`absolute inset-0 transition-all duration-200 ${
-                  isMobileMenuOpen
-                    ? "rotate-0 opacity-100"
-                    : "rotate-180 opacity-0"
-                }`}
-              />
-            </div>
-          </button>
-        </div>
-      </header>
-      {/* Mobile Menu */}
-      <div
-        className={`absolute z-10 w-full overflow-hidden bg-white shadow-lg transition-all duration-300 ease-in-out md:hidden ${
-          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <nav className="px-8 py-4">
-          <ul className="flex flex-col gap-4">
-            {NAVIGATION_LANDING_DATA.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`transform transition-all duration-300 ease-in-out ${
-                  isMobileMenuOpen
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: isMobileMenuOpen
-                    ? `${index * 100}ms`
-                    : "0ms",
-                }}
-              >
-                <a
-                  href={nav.url}
-                  className="block rounded-md px-2 py-2 transition-all duration-200 hover:bg-slate-50 hover:text-slate-400"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {nav.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-      {/* Hero Section */}
-      <section className="grid min-h-[550px] grid-cols-1 px-8 md:grid-cols-2 md:px-32">
-        {/* Call to action */}
-        <motion.div className="flex flex-col justify-center md:py-0">
-          <div className="space-y-4 text-center md:text-left">
-            <h1 className="text-5xl font-bold">
-              Lorem ipsum dolor sit{" "}
-              <span className="text-blue-400">amet</span>{" "}
-            </h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-            {/* Button section */}
-            <div>
-              <button className="rounded-md bg-blue-400 px-4 py-2 text-white transition-colors duration-200 hover:bg-blue-500">
-                Get Started
-              </button>
-            </div>
-          </div>
-        </motion.div>
-        {/* Hero Image */}
-        <div className="flex items-center justify-center">
-          <img
-            src={HeroImage}
-            alt="Hero"
-            className="w-[350px] drop-shadow md:w-[500px] xl:w-[600px]"
-          />
-        </div>
-      </section>
-      {/* Cards section */}
-    </div>
-  );
-}
 
 function LandingPage2() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
-    <div className="bg-background relative min-h-screen overflow-hidden">
+    <div className="bg-background relative min-h-screen">
       {/* Header */}
       <header className="border-border/40 bg-background/80 sticky top-0 z-10 border-b backdrop-blur-sm">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -238,6 +121,184 @@ function LandingPage2() {
           </ul>
         </nav>
       </div>
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-16">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-12">
+            {/* Left Content */}
+            <div className="space-y-8">
+              <div className="inline-flex">
+                <Badge
+                  variant="secondary"
+                  className="gap-1.5 px-3 py-1.5 text-xs font-medium"
+                >
+                  <Sparkles className="h-3 w-3" />
+                  AI-Powered Healthcare Assistant
+                </Badge>
+              </div>
+              {/* Title */}
+              <div className="space-y-4">
+                <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                  Your clinic's smartest{" "}
+                  <span className="text-primary">AI secretary</span>
+                </h1>
+                <p className="text-muted-foreground max-w-xl text-lg leading-relaxed text-balance sm:text-xl">
+                  Automate appointment scheduling, patient communications, and
+                  administrative tasks. Save 15+ hours per week and focus on
+                  what matters most—patient care.
+                </p>
+              </div>
+              {/* CTA Buttons */}
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Button size="lg" className="group text-base font-semibold">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent text-base font-semibold"
+                >
+                  Watch Demo
+                </Button>
+              </div>
+              {/* Stats */}
+              <div className="flex flex-wrap gap-8 pt-4">
+                <div>
+                  <div className="text-foreground text-3xl font-bold">15+</div>
+                  <div className="text-muted-foreground text-sm">
+                    Hours saved weekly
+                  </div>
+                </div>
+                <div>
+                  <div className="text-foreground text-3xl font-bold">98%</div>
+                  <div className="text-muted-foreground text-sm">
+                    Accuracy rate
+                  </div>
+                </div>
+                <div>
+                  <div className="text-foreground text-3xl font-bold">
+                    2.5k+
+                  </div>
+                  <div className="text-muted-foreground text-sm">
+                    Clinics trust us
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Right Content */}
+            <div className="relative hidden items-center justify-center lg:flex lg:h-[600px]">
+              <div className="relative w-full max-w-lg">
+                <img
+                  src={HeroImage}
+                  alt="AI Assistant helping clinic secretary"
+                  className="h-auto w-full drop-shadow"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="bg-muted/30 py-16 lg:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <Badge variant="secondary" className="mb-4">
+              Features
+            </Badge>
+            <h2 className="mb-4 text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+              Everything you need to run your clinic efficiently
+            </h2>
+            <p className="text-muted-foreground text-lg text-balance">
+              Powerful AI automation that integrates seamlessly with your
+              existing workflow
+            </p>
+          </div>
+
+          {/* Cards */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Card className="border-border/50 p-6 transition-shadow hover:shadow-lg">
+              <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+                <Calendar className="text-primary h-6 w-6" />
+              </div>
+              <h3 className="text-foreground mb-2 text-xl font-semibold">
+                Smart Scheduling
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Automatically manage appointments, send reminders, and handle
+                rescheduling requests 24/7.
+              </p>
+            </Card>
+
+            <Card className="border-border/50 p-6 transition-shadow hover:shadow-lg">
+              <div className="bg-accent/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+                <MessageSquare className="text-accent h-6 w-6" />
+              </div>
+              <h3 className="text-foreground mb-2 text-xl font-semibold">
+                Patient Communication
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Handle patient inquiries via SMS, email, and chat with
+                intelligent, context-aware responses.
+              </p>
+            </Card>
+
+            <Card className="border-border/50 p-6 transition-shadow hover:shadow-lg">
+              <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+                <Phone className="text-primary h-6 w-6" />
+              </div>
+              <h3 className="text-foreground mb-2 text-xl font-semibold">
+                Call Management
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Screen calls, take messages, and route urgent matters to the
+                right person instantly.
+              </p>
+            </Card>
+
+            <Card className="border-border/50 p-6 transition-shadow hover:shadow-lg">
+              <div className="bg-accent/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+                <FileText className="text-accent h-6 w-6" />
+              </div>
+              <h3 className="text-foreground mb-2 text-xl font-semibold">
+                Document Processing
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Organize patient records, insurance forms, and referrals with
+                AI-powered categorization.
+              </p>
+            </Card>
+
+            <Card className="border-border/50 p-6 transition-shadow hover:shadow-lg">
+              <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+                <Clock className="text-primary h-6 w-6" />
+              </div>
+              <h3 className="text-foreground mb-2 text-xl font-semibold">
+                Time Optimization
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Reduce no-shows by 40% with intelligent reminder sequences and
+                confirmation tracking.
+              </p>
+            </Card>
+
+            <Card className="border-border/50 p-6 transition-shadow hover:shadow-lg">
+              <div className="bg-accent/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+                <BarChart3 className="text-accent h-6 w-6" />
+              </div>
+              <h3 className="text-foreground mb-2 text-xl font-semibold">
+                Analytics & Insights
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Track appointment trends, patient satisfaction, and operational
+                efficiency in real-time.
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
