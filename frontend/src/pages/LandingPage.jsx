@@ -21,7 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import HeroImage from "@/assets/hero_image.png";
 
-function LandingPage2() {
+function LandingPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <div className="bg-background relative min-h-screen">
@@ -30,17 +30,27 @@ function LandingPage2() {
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Brand */}
-            <div className="flex items-center gap-2">
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex items-center gap-2"
+            >
               <div className="bg-primary flex h-8 w-8 items-center justify-center rounded-lg">
                 <Bot className="text-primary-foreground h-5 w-5" />
               </div>
               <span className="text-foreground text-xl font-semibold">
                 ALE<span className="text-primary">IA</span>
               </span>
-            </div>
+            </motion.div>
 
             {/* Navigation Links */}
-            <div className="hidden items-center gap-8 md:flex">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="hidden items-center gap-8 md:flex"
+            >
               {NAVIGATION_LANDING_DATA.map((item) => (
                 <a
                   key={item.id}
@@ -50,17 +60,22 @@ function LandingPage2() {
                   {item.title}
                 </a>
               ))}
-            </div>
+            </motion.div>
 
             {/* CTA buttons */}
-            <div className="flex items-center gap-3">
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex items-center gap-3"
+            >
               <Button variant="ghost" size="sm" className="text-sm font-medium">
                 Login
               </Button>
               <Button size="sm" className="text-sm font-medium">
                 Get Started
               </Button>
-            </div>
+            </motion.div>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
@@ -504,4 +519,4 @@ function LandingPage2() {
   );
 }
 
-export default LandingPage2;
+export default LandingPage;
