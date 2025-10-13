@@ -20,13 +20,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import HeroImage from "@/assets/hero_image.png";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
-    <div className="bg-background relative min-h-screen">
+    <div className="relative min-h-screen bg-[#EDFBFF]">
       {/* Header */}
-      <header className="border-border/40 bg-background/80 sticky top-0 z-10 border-b backdrop-blur-sm">
+      <header className="border-border/40 sticky top-0 z-10 bg-[#EDFBFF]/80 backdrop-blur-sm">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Brand */}
@@ -36,11 +37,11 @@ function LandingPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex items-center gap-2"
             >
-              <div className="bg-primary flex h-8 w-8 items-center justify-center rounded-lg">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-400">
                 <Bot className="text-primary-foreground h-5 w-5" />
               </div>
               <span className="text-foreground text-xl font-semibold">
-                ALE<span className="text-primary">IA</span>
+                ALE<span className="text-blue-400">IA</span>
               </span>
             </motion.div>
 
@@ -69,11 +70,11 @@ function LandingPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex items-center gap-3"
             >
-              <Button variant="ghost" size="sm" className="text-sm font-medium">
-                Login
-              </Button>
-              <Button size="sm" className="text-sm font-medium">
-                Get Started
+              <Button
+                size="sm"
+                className="bg-blue-400 text-sm font-medium hover:bg-blue-500"
+              >
+                <Link to="/auth/login">Login</Link>
               </Button>
             </motion.div>
 
@@ -104,6 +105,7 @@ function LandingPage() {
           </div>
         </nav>
       </header>
+
       {/* Mobile Menu */}
       <div
         className={`absolute z-10 w-full overflow-hidden bg-white shadow-lg transition-all duration-300 ease-in-out md:hidden ${
@@ -140,11 +142,16 @@ function LandingPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section id="product" className="relative overflow-hidden">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-16">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-12">
             {/* Left Content */}
-            <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="space-y-8"
+            >
               <div className="inline-flex">
                 <Badge
                   variant="secondary"
@@ -203,9 +210,14 @@ function LandingPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
             {/* Right Content */}
-            <div className="relative hidden items-center justify-center lg:flex lg:h-[600px]">
+            <motion.div
+              initial={{ x: 200, opacity: 0, rotate: 10 }}
+              animate={{ x: 0, opacity: 1, rotate: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="relative hidden items-center justify-center lg:flex lg:h-[600px]"
+            >
               <div className="relative w-full max-w-lg">
                 <img
                   src={HeroImage}
@@ -213,13 +225,20 @@ function LandingPage() {
                   className="h-auto w-full drop-shadow"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="bg-muted/30 py-16 lg:py-16">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+        id="features"
+        className="bg-muted/30 py-16 lg:py-16"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4">
@@ -315,10 +334,17 @@ function LandingPage() {
             </Card>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Benefits Section */}
-      <section className="py-16 lg:py-16">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        viewport={{ once: true }}
+        id="why-aleia"
+        className="py-16 lg:py-16"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="space-y-6">
@@ -419,10 +445,16 @@ function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="bg-secondary text-secondary-foreground py-16 lg:py-24">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="bg-secondary text-secondary-foreground py-16 lg:py-24"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl space-y-8 text-center">
             <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
@@ -452,10 +484,16 @@ function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
-      <footer className="border-border/40 border-t py-12">
+      <motion.footer
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="border-border/40 border-t py-12"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div>
@@ -514,7 +552,7 @@ function LandingPage() {
             © 2025 ALEIA. All rights reserved.
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }
